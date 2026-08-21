@@ -32,7 +32,7 @@ function HeroWordmark() {
   const words = ["REHMAN", "CONSTRUCTION"];
   let n = 0;
   return (
-    <h2 className="flex flex-wrap justify-center gap-x-[0.18em] gap-y-1 overflow-hidden text-[9vw] font-extrabold leading-none tracking-[0.05em] text-transparent sm:text-[6vw] lg:text-[5rem]">
+    <h2 className="flex flex-wrap justify-center gap-x-[0.18em] gap-y-1 overflow-hidden text-[7vw] font-extrabold leading-none tracking-[0.05em] text-transparent sm:text-[6vw] lg:text-[5rem]">
       {words.map((word) => (
         <span key={word} className="flex gap-[0.06em]">
           {word.split("").map((c, i) => {
