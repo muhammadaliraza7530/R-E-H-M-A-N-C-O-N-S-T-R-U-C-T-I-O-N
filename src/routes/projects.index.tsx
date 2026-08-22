@@ -1,9 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { projects } from "@/lib/site";
-import { ProjectCard } from "@/components/ProjectCard";
 import { PageHero, CtaBand } from "@/components/PageBits";
-import { SectionHeading, Reveal } from "@/components/ui-bits";
-import { PostsRail } from "@/components/PostsRail";
 import { img } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects/")({
@@ -30,33 +26,20 @@ function ProjectsPage() {
     <>
       <PageHero
         eyebrow="Portfolio"
-        title="Every project, from first drawing to final handover"
-        intro="The homes we have completed, the ones under construction right now, and what is coming next."
+        title="Coming Soon"
+        intro="Our project gallery is being updated. Please check back soon to see our completed and ongoing work."
         image={img.luxuryHouse}
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 70}>
-                <ProjectCard project={p} />
-              </Reveal>
-            ))}
+        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+          <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/10 p-10 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Under Construction</p>
+            <h2 className="mt-4 text-2xl font-bold sm:text-3xl">New project showcase is on the way</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              We are preparing fresh photos and case studies from our recent sites.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section className="overflow-hidden border-y border-border bg-card/30 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            eyebrow="Latest posts"
-            title="Coming soon & on-site updates"
-            intro="Our published announcements, shown complete — nothing cropped."
-          />
-        </div>
-        <div className="mt-12">
-          <PostsRail />
         </div>
       </section>
 

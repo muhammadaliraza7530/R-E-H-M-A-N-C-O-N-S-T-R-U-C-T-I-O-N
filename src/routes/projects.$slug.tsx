@@ -1,125 +1,43 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { projects } from "@/lib/site";
-import { site } from "@/lib/site-data";
-import { Reveal } from "@/components/ui-bits";
-import { CtaBand } from "@/components/PageBits";
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHero, CtaBand } from "@/components/PageBits";
+import { img } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects/$slug")({
-  loader: ({ params }) => {
-    const project = projects.find((p) => p.slug === params.slug);
-    if (!project) throw notFound();
-    return { project };
-  },
-  head: ({ loaderData }) => {
-    if (!loaderData) {
-      return { meta: [{ title: "Project not found — Rehman Construction" }, { name: "robots", content: "noindex" }] };
-    }
-    const { project } = loaderData;
-    const title = `${project.title}, ${project.location} — Rehman Construction`;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: project.blurb },
-        { property: "og:title", content: title },
-        { property: "og:description", content: project.blurb },
-      ],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title: "Project — Coming Soon | Rehman Construction" },
+      { name: "description", content: "This project page is being updated. Please check back soon." },
+      { property: "og:title", content: "Project — Coming Soon" },
+      { property: "og:description", content: "This project page is being updated." },
+      { name: "robots", content: "noindex" },
+    ],
+  }),
   component: ProjectDetail,
 });
 
 function ProjectDetail() {
-  const { project } = Route.useLoaderData();
-  const others = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
-
   return (
-    <article className="pb-4 pt-28 lg:pt-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-primary"
-        >
-          <ArrowLeft className="size-4" /> All projects
-        </Link>
+    <>
+      <PageHero
+        eyebrow="Project"
+        title="Coming Soon"
+        intro="Details for this project are being prepared. Please check back soon."
+        image={img.luxuryVilla}
+      />
 
-        <Reveal className="mt-6">
-          <div className="lit-panel overflow-hidden bg-card">
-            <img
-              src={project.image}
-              alt={`${project.title} in ${project.location}`}
-              className="aspect-16/9 w-full object-cover"
-            />
-          </div>
-        </Reveal>
-
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.5fr_1fr]">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">{project.status}</p>
-            <h1 className="mt-4 text-3xl font-extrabold leading-[1.1] sm:text-5xl">{project.title}</h1>
-            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {project.blurb}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+          <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/10 p-10 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Under Construction</p>
+            <h2 className="mt-4 text-2xl font-bold sm:text-3xl">Project details are on the way</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Photos, scope and timeline for this project will be published shortly.
             </p>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {project.gallery.map((g: string, i: number) => (
-                <Reveal key={`${g}-${i}`} delay={i * 80}>
-                  <div className="lit-panel overflow-hidden bg-card">
-                    <img src={g} alt={project.title} loading="lazy" className="aspect-4/3 w-full object-cover" />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-
-          <dl className="lit-panel h-fit bg-card p-7 text-sm">
-            {[
-              ["Location", project.location],
-              ["Status", project.status],
-              ["Style", project.category],
-              ["Scope", "Design & construction"],
-            ].map(([k, v]) => (
-              <div key={k} className="flex justify-between gap-4 border-b border-border/60 py-3 last:border-0">
-                <dt className="text-muted-foreground">{k}</dt>
-                <dd className="font-semibold">{v}</dd>
-              </div>
-            ))}
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sheen-on-hover mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-accent"
-            >
-              Discuss a similar home <ArrowRight className="size-4" />
-            </a>
-          </dl>
-        </div>
-
-        <div className="mt-20">
-          <h2 className="text-2xl font-extrabold">More projects</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {others.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 80}>
-                <Link
-                  to="/projects/$slug"
-                  params={{ slug: p.slug }}
-                  className="lit-panel block overflow-hidden bg-card"
-                >
-                  <img src={p.image} alt={p.title} loading="lazy" className="aspect-4/3 w-full object-cover" />
-                  <div className="p-5">
-                    <h3 className="text-base font-bold">{p.title}</h3>
-                    <p className="mt-1 text-xs text-muted-foreground">{p.location}</p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="mt-20">
-        <CtaBand />
-      </div>
-    </article>
+      <CtaBand />
+    </>
   );
 }
