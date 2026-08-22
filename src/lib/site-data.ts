@@ -1,11 +1,9 @@
 /**
  * Single source of truth for all site content.
- * Photography lives in /public; the brand mark is a CDN asset pointer.
+ * Photography and branding live in /public.
  */
-import logoAsset from "@/assets/rehman-logo.jpeg.asset.json";
-
 export const img = {
-  logo: logoAsset.url,
+  logo: "/logo.jpeg",
 
   // Photoreal hero / feature photography
   spanishVilla: "/homes/hero-spanish.jpg",
@@ -88,15 +86,15 @@ export const stats = [
 
 /** Branded social posts — shown full-frame, never cropped. */
 export const posts = [
-  { image: "/posts/post-1.jpg", title: "Modern Facade Residence", location: "Islamabad", tag: "Coming Soon" },
-  { image: "/posts/post-2.jpg", title: "Crafting Classic Beauty", location: "Rawalpindi", tag: "In Progress" },
-  { image: "/posts/post-3.jpg", title: "Concept to Creation", location: "Islamabad", tag: "In Progress" },
-  { image: "/posts/post-4.jpg", title: "Classical Grand Residence", location: "Bahria Town", tag: "Coming Soon" },
-  { image: "/posts/post-5.jpg", title: "Turnkey Villa Handover", location: "Islamabad", tag: "Completed" },
-  { image: "/posts/post-6.jpg", title: "Building Dreams", location: "Rawalpindi", tag: "Under Construction" },
-  { image: "/posts/post-7.jpg", title: "Constructing Excellence", location: "Islamabad", tag: "Under Construction" },
-  { image: "/posts/post-8.jpg", title: "Grey Structure — Night", location: "Bahria Town", tag: "Coming Soon" },
-  { image: "/posts/post-9.jpg", title: "Premium Elevation", location: "Islamabad", tag: "Coming Soon" },
+  { image: "/posts/post1.jpeg", title: "Modern Facade Residence", location: "Islamabad", tag: "Coming Soon" },
+  { image: "/posts/post2.jpeg", title: "Crafting Classic Beauty", location: "Rawalpindi", tag: "In Progress" },
+  { image: "/posts/post3.jpeg", title: "Concept to Creation", location: "Islamabad", tag: "In Progress" },
+  { image: "/posts/post4.jpeg", title: "Classical Grand Residence", location: "Bahria Town", tag: "Coming Soon" },
+  { image: "/posts/post5.jpeg", title: "Turnkey Villa Handover", location: "Islamabad", tag: "Completed" },
+  { image: "/posts/post6.jpeg", title: "Building Dreams", location: "Rawalpindi", tag: "Under Construction" },
+  { image: "/posts/post7.jpeg", title: "Constructing Excellence", location: "Islamabad", tag: "Under Construction" },
+  { image: "/posts/post8.jpeg", title: "Grey Structure — Night", location: "Bahria Town", tag: "Coming Soon" },
+  { image: "/posts/post9.jpeg", title: "Premium Elevation", location: "Islamabad", tag: "Coming Soon" },
 ];
 
 export const testimonials = [
