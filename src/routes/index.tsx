@@ -256,6 +256,26 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Cost calculator */}
+      <section className="border-y border-border bg-card/30 py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionHeading
+            eyebrow="Estimate"
+            title="Construction cost calculator"
+            intro="Enter your area and finish level to get an instant estimate for your project."
+          />
+          <div className="mt-12 overflow-hidden rounded-2xl border border-primary/30 bg-[#0E1A2E]">
+            <iframe
+              src="/cost-calculator.html"
+              title="Construction Cost Estimate"
+              loading="lazy"
+              className="h-[720px] w-full border-0"
+            />
+          </div>
+        </div>
+      </section>
+
+
       {/* Testimonials */}
       <section className="overflow-hidden border-y border-border bg-card/30 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
