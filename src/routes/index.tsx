@@ -9,6 +9,7 @@ import { PostsRail } from "@/components/PostsRail";
 import { TestimonialsRail } from "@/components/Testimonials";
 import { CtaBand } from "@/components/PageBits";
 import { TrustedPartners } from "@/components/TrustedPartners";
+import { CostCalculatorPanel } from "@/components/CostCalculatorPanel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -446,6 +447,20 @@ function HomePage() {
 
       {/* Why Choose Us */}
       <WhyChooseUsSection />
+
+      {/* Construction Cost Calculator */}
+      <section className="py-20 lg:py-28 border-y border-border bg-card/30">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            eyebrow="Cost estimate"
+            title="Estimate your build cost"
+            intro="Pick a plot size or enter your covered area for an indicative architecture + grey structure + finishing estimate."
+          />
+          <div className="mt-12">
+            <CostCalculatorPanel />
+          </div>
+        </div>
+      </section>
 
       {/* Meet CEO */}
       <CeoSection />
