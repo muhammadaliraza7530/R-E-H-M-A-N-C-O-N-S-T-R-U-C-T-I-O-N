@@ -74,7 +74,7 @@ export function CostCalculatorPanel({ onNavigate }: { onNavigate?: () => void })
       <div className="lit-panel overflow-hidden bg-card">
         <div className="grid lg:grid-cols-[280px_1fr]">
           {/* Plot selector */}
-          <aside className="border-b border-border p-5 sm:p-8 lg:border-b-0 lg:border-r">
+          <aside className="min-w-0 border-b border-border p-5 sm:p-8 lg:border-b-0 lg:border-r">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Plot size</p>
             <div className="mt-5 grid grid-cols-2 gap-2.5 lg:grid-cols-1">
               {PLOTS.map((p, i) => (
@@ -114,7 +114,7 @@ export function CostCalculatorPanel({ onNavigate }: { onNavigate?: () => void })
           </aside>
 
           {/* Breakdown */}
-          <div className="p-5 sm:p-8 lg:p-10">
+          <div className="min-w-0 p-5 sm:p-8 lg:p-10">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="text-base font-extrabold uppercase tracking-wide sm:text-xl">
                 {PLOTS[plotIdx].name} House <span className="text-muted-foreground">— Cost Breakdown</span>
@@ -124,8 +124,8 @@ export function CostCalculatorPanel({ onNavigate }: { onNavigate?: () => void })
               </p>
             </div>
 
-            <div className="mt-6 overflow-x-auto">
-              <table className="w-full min-w-[520px] text-sm">
+            <div className="mt-6 -mx-1 overflow-x-auto px-1">
+              <table className="w-full min-w-[340px] text-xs sm:min-w-[520px] sm:text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
                     <th className="pb-3 pr-4">Service</th>
