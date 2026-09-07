@@ -1,45 +1,89 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { MapPin, Ruler, Clock } from "lucide-react";
 import { PageHero, CtaBand } from "@/components/PageBits";
 import { img } from "@/lib/site-data";
+import { projects, projectCategories, type ProjectCategory } from "@/lib/site";
+import { Reveal, SectionHeading } from "@/components/ui-bits";
 
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Projects — Recent Work | Rehman Construction & Enterprises" },
+      { title: "Projects — Completed, Ongoing & Renovation Work | Rehman Construction" },
       {
         name: "description",
         content:
-          "Completed and ongoing residential and commercial projects by Rehman Construction & Enterprises across Islamabad and Rawalpindi.",
+          "Completed, ongoing, renovation and residential projects by Rehman Construction & Enterprises across Islamabad and Rawalpindi, with location, scope and duration.",
       },
-      { property: "og:title", content: "Projects — Rehman Construction & Enterprises" },
-      {
-        property: "og:description",
-        content: "Villas, plazas and grey structures built by Rehman Construction & Enterprises.",
-      },
+      { property: "og:title", content: "Featured Projects — Rehman Construction & Enterprises" },
+      { property: "og:description", content: "Villas, plazas and grey structures built across Islamabad and Rawalpindi." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ProjectsPage,
 });
 
 function ProjectsPage() {
+  const [filter, setFilter] = useState<ProjectCategory>("All Projects");
+  const list = filter === "All Projects" ? projects : projects.filter((p) => p.tags.includes(filter as never));
+
   return (
     <>
       <PageHero
         eyebrow="Portfolio"
-        title="Coming Soon"
-        intro="Our project gallery is being updated. Please check back soon to see our completed and ongoing work."
+        title="Featured Projects"
+        intro="Completed, ongoing and renovation work — with the location, scope and timeline behind every build."
         image={img.luxuryHouse}
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
-          <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/10 p-10 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Under Construction</p>
-            <h2 className="mt-4 text-2xl font-bold sm:text-3xl">New project showcase is on the way</h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              We are preparing fresh photos and case studies from our recent sites.
-            </p>
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading align="center" eyebrow="Our projects" title="Browse by category" />
+
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {projectCategories.map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setFilter(c)}
+                className={`reg-chip rounded-full border px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] ${
+                  filter === c ? "is-on border-primary text-primary" : "border-border text-muted-foreground"
+                }`}
+              >
+                {c}
+              </button>
+            ))}
           </div>
+
+          <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 70} className="h-full">
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: p.slug }}
+                  className="lit-panel flex h-full flex-col overflow-hidden bg-card"
+                >
+                  <img src={p.image} alt={`${p.title}, ${p.location}`} loading="lazy" className="aspect-4/3 w-full object-cover" />
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">{p.status}</span>
+                    <h3 className="mt-2 text-lg font-bold">{p.title}</h3>
+                    <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
+                      <li className="flex items-center gap-2"><MapPin className="size-3.5 text-primary" /> {p.location}</li>
+                      <li className="flex items-center gap-2"><Ruler className="size-3.5 text-primary" /> {p.projectType}</li>
+                      <li className="flex items-center gap-2"><Clock className="size-3.5 text-primary" /> {p.duration}</li>
+                    </ul>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          {list.length === 0 && (
+            <p className="mt-12 text-center text-sm text-muted-foreground">
+              No projects in this category yet — new work is added as it completes.
+            </p>
+          )}
         </div>
       </section>
 

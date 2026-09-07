@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin } from "lucide-react";
 import { navLinks, site } from "@/lib/site-data";
 
 export function Footer() {
@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={site.logo} alt="Rehman Construction & Enterprises logo" className="size-14 rounded-lg object-contain" />
+            <img src={site.logo} alt="Rehman Construction & Enterprises logo" width={224} height={224} className="size-16 object-contain" />
             <span className="text-sm font-bold uppercase tracking-[0.22em]">{site.name}</span>
           </div>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
@@ -20,6 +20,7 @@ export function Footer() {
               { label: "Instagram", href: site.instagram },
               { label: "Facebook", href: site.facebook },
               { label: "YouTube", href: site.youtube },
+              { label: "LinkedIn", href: site.linkedin },
               { label: "WhatsApp", href: site.whatsapp },
             ].map((s) => (
               <a

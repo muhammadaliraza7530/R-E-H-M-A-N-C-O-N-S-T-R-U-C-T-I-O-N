@@ -21,12 +21,26 @@ export const company = {
   ],
 };
 
+export const projectCategories = [
+  "All Projects",
+  "Completed Projects",
+  "Ongoing Projects",
+  "Renovation Projects",
+  "Residential Projects",
+] as const;
+
+export type ProjectCategory = (typeof projectCategories)[number];
+
 export type Project = {
   slug: string;
   title: string;
   location: string;
   status: "Completed" | "Under Construction" | "Upcoming";
   category: "Modern" | "Classic" | "Spanish" | "Grey Structure";
+  projectType: string;
+  scope: string;
+  duration: string;
+  tags: Exclude<ProjectCategory, "All Projects">[];
   image: string;
   gallery: string[];
   blurb: string;
@@ -36,9 +50,13 @@ export const projects: Project[] = [
   {
     slug: "modern-luxury-villa",
     title: "Modern Luxury Villa",
-    location: "Residential — Islamabad",
+    location: "DHA Phase 2, Islamabad",
     status: "Completed",
     category: "Modern",
+    projectType: "Turnkey residential villa — 1 Kanal",
+    scope: "Excavation, grey structure, elevation, complete finishing and handover",
+    duration: "14 months",
+    tags: ["Completed Projects", "Residential Projects"],
     image: img.luxuryVilla,
     gallery: [img.luxuryVilla, img.luxuryHouse, img.modernVilla],
     blurb:
@@ -47,9 +65,13 @@ export const projects: Project[] = [
   {
     slug: "contemporary-residence",
     title: "Contemporary Residence",
-    location: "Turnkey — 1 Kanal",
+    location: "Bahria Town, Rawalpindi",
     status: "Completed",
     category: "Modern",
+    projectType: "Turnkey residence — 1 Kanal",
+    scope: "Structure, travertine-and-graphite facade, glazing, interior finishing",
+    duration: "12 months",
+    tags: ["Completed Projects", "Residential Projects"],
     image: img.luxuryHouse,
     gallery: [img.luxuryHouse, img.modernVilla, img.brickFront],
     blurb:
@@ -58,9 +80,13 @@ export const projects: Project[] = [
   {
     slug: "classic-facade-home",
     title: "Classic Facade Home",
-    location: "Residential — 10 Marla",
+    location: "G-13, Islamabad",
     status: "Completed",
     category: "Classic",
+    projectType: "Residential — 10 Marla",
+    scope: "Columns, arched glazing, double-height foyer, complete finishing",
+    duration: "10 months",
+    tags: ["Completed Projects", "Residential Projects"],
     image: img.classicMansion,
     gallery: [img.classicMansion, img.courtyard, img.completedVilla],
     blurb:
@@ -69,9 +95,13 @@ export const projects: Project[] = [
   {
     slug: "premium-elevation",
     title: "Premium Elevation",
-    location: "Design & Build",
+    location: "Gulraiz, Rawalpindi",
     status: "Under Construction",
     category: "Modern",
+    projectType: "Design & build elevation package",
+    scope: "Stone cladding, stucco detailing and layered facade lighting",
+    duration: "5 months (ongoing)",
+    tags: ["Ongoing Projects", "Residential Projects"],
     image: img.spanishVilla,
     gallery: [img.spanishVilla, img.courtyard, img.classicMansion],
     blurb:
@@ -79,10 +109,14 @@ export const projects: Project[] = [
   },
   {
     slug: "gate-and-facade-detail",
-    title: "Gate & Facade Detail",
-    location: "Finishing Works",
+    title: "Renovation & Facade Upgrade",
+    location: "Gulraiz, Rawalpindi",
     status: "Completed",
     category: "Modern",
+    projectType: "Renovation of a 20-year-old house",
+    scope: "New facade, layout changes, tiling, woodwork, lighting and paint",
+    duration: "6 months",
+    tags: ["Renovation Projects", "Completed Projects", "Residential Projects"],
     image: img.brickFront,
     gallery: [img.brickFront, img.greyClassic, img.luxuryHouse],
     blurb:
@@ -91,9 +125,13 @@ export const projects: Project[] = [
   {
     slug: "grey-structure-handover",
     title: "Grey Structure Handover",
-    location: "Structure — Bahria",
+    location: "Bahria Town, Rawalpindi",
     status: "Under Construction",
     category: "Grey Structure",
+    projectType: "Grey structure — 10 Marla",
+    scope: "Footings, columns, slabs, blockwork and plaster, certified stage by stage",
+    duration: "7 months (ongoing)",
+    tags: ["Ongoing Projects", "Residential Projects"],
     image: img.modernVilla,
     gallery: [img.modernVilla, img.greyClassic, img.brickFront],
     blurb:

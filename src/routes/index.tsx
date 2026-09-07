@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, Award, ShieldCheck, HardHat, Mail, MapPin, Maximize, Ruler } from "lucide-react";
 import { useEffect, useState } from "react";
-import { heroSlides, process, services, site, stats } from "@/lib/site-data";
+import { heroSlides, img, process, services, site, stats } from "@/lib/site-data";
 import { projects } from "@/lib/site";
 import { Counter, Reveal, SectionHeading } from "@/components/ui-bits";
 import { AutoScroller } from "@/components/AutoScroller";
 import { PostsRail } from "@/components/PostsRail";
 import { TestimonialsRail } from "@/components/Testimonials";
 import { CtaBand } from "@/components/PageBits";
+import { TrustedPartners } from "@/components/TrustedPartners";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -81,17 +82,20 @@ function Hero() {
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-black/62" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-black/55" />
+      <div className="light-scrim absolute inset-0" />
+      
 
       <div className="relative mx-auto w-full max-w-5xl px-5 pb-16 pt-32 text-center lg:px-8">
-        <p className="hero-rise text-[10px] font-bold uppercase tracking-[0.4em] text-primary sm:text-xs">
-          {site.tagline}
-        </p>
         <HeroWordmark />
-        <p className="mx-auto mt-1 text-[11px] font-semibold uppercase tracking-[0.5em] text-foreground/80 sm:text-sm">
-          Homes
-        </p>
+
+        <div className="mx-auto mt-6 flex max-w-xl flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full border border-primary/40 bg-background/60 px-6 py-3 backdrop-blur-sm">
+          {["Quality", "Trust", "Excellence"].map((word, i) => (
+            <span key={word} className="flex items-center gap-4">
+              {i > 0 && <span className="size-1.5 rounded-full bg-primary" />}
+              <span className="text-sm font-extrabold uppercase tracking-[0.3em] text-foreground sm:text-base">{word}</span>
+            </span>
+          ))}
+        </div>
 
         <h1
           key={slide.title}
@@ -99,7 +103,7 @@ function Hero() {
         >
           {slide.title}
         </h1>
-        <p key={slide.highlight} className="animate-rise-in mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-300 sm:text-base">
+        <p key={slide.highlight} className="animate-rise-in mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
           {slide.highlight}
         </p>
 
@@ -118,6 +122,12 @@ function Hero() {
           >
             <Phone className="size-4" /> WhatsApp us
           </a>
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/60 px-7 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            View Our Services
+          </Link>
         </div>
 
         <div className="mx-auto mt-12 flex max-w-lg justify-center gap-2">
@@ -132,6 +142,249 @@ function Hero() {
               }`}
             />
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-background">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8 flex flex-col md:flex-row gap-12 items-center">
+        <div className="md:w-1/2">
+          <SectionHeading
+            eyebrow="Company Introduction"
+            title="Building More Than Structures — Building Trust"
+            intro="Rehman Construction is a modern construction management company with engineering expertise."
+          />
+          <div className="mt-8 space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
+            <p>
+              We are on a mission to redefine construction standards by providing transparent, 
+              high-quality, and professionally managed construction services. Our vision is to 
+              be the most trusted construction partner for residential and commercial projects.
+            </p>
+            <p>
+              <strong>Our Core Values:</strong> Quality commitment, professional execution, 
+              and unwavering trust. We don't just construct buildings, we build lasting 
+              relationships with our clients.
+            </p>
+          </div>
+          <div className="mt-8">
+             <Link
+                to="/about"
+                className="btn-shake sheen-on-hover inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-accent"
+              >
+                Learn More <ArrowRight className="size-4" />
+             </Link>
+          </div>
+        </div>
+        <div className="md:w-1/2 grid grid-cols-2 gap-4">
+           <img src={img.modernVilla} alt="Modern Villa" className="rounded-xl object-cover h-48 w-full" />
+           <img src={img.completedVilla} alt="Completed Villa" className="rounded-xl object-cover h-48 w-full mt-8" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseUsSection() {
+  const reasons = [
+    { title: "QUALITY", icon: Award, desc: "Professional workmanship." },
+    { title: "TRUST", icon: ShieldCheck, desc: "Transparent communication." },
+    { title: "EXCELLENCE", icon: CheckCircle2, desc: "Attention to detail." },
+    { title: "PROFESSIONAL MANAGEMENT", icon: HardHat, desc: "Proper planning and supervision." },
+  ];
+  return (
+    <section className="py-20 lg:py-28 relative overflow-hidden border-y border-border">
+      <div className="absolute inset-0 bg-[url('/homes/hero-luxury.jpg')] opacity-15 bg-cover bg-center" />
+      <div className="light-scrim absolute inset-0" />
+      <div className="mx-auto max-w-7xl px-5 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-extrabold sm:text-5xl text-foreground">Why Choose Us?</h2>
+          <p className="mt-4 text-primary font-medium tracking-widest uppercase">Engineered with Expertise. Built with Trust.</p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {reasons.map((r, i) => (
+            <Reveal key={r.title} delay={i * 100}>
+              <div className="flex flex-col items-center text-center p-6 border border-border rounded-2xl bg-card backdrop-blur-sm hover:bg-card/90 transition-colors">
+                <r.icon className="size-12 text-primary mb-4" />
+                <h3 className="text-lg font-bold mb-2">{r.title}</h3>
+                <p className="text-sm text-muted-foreground">{r.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CeoSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-card/30 border-y border-border">
+      <div className="mx-auto max-w-5xl px-5 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+        <div className="md:w-1/3 flex justify-center">
+          <div className="relative">
+            <div className="absolute -inset-3 rounded-[2rem] bg-primary/15 blur-2xl" aria-hidden />
+            <div className="relative w-64 overflow-hidden rounded-[1.75rem] border border-primary/40 bg-card p-2 shadow-xl">
+              <img
+                src={img.ceo}
+                alt="Sami Ur Rehman, Founder & CEO of Rehman Construction & Enterprises"
+                width={600}
+                height={750}
+                loading="lazy"
+                className="aspect-4/5 w-full rounded-[1.35rem] object-cover object-top"
+              />
+              <span className="absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-lg">
+                Founder &amp; CEO
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="md:w-2/3">
+          <h2 className="text-3xl font-extrabold mb-2">Sami Ur Rehman</h2>
+          <p className="text-primary font-bold tracking-widest uppercase text-sm mb-6">Founder & CEO</p>
+          <ul className="space-y-3 mb-6 text-sm sm:text-base text-foreground/80">
+            <li className="flex items-center gap-3"><CheckCircle2 className="size-5 text-primary" /> BS Civil Engineering</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="size-5 text-primary" /> MS Construction Management</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="size-5 text-primary" /> 3 Years Professional Field Experience</li>
+          </ul>
+          <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground leading-relaxed">
+            "My vision is to bridge the gap between engineering excellence and field execution. 
+            We bring professional management to every site, ensuring that every project is built 
+            to the highest standards of quality and trust."
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LicenseSection() {
+  return (
+    <section className="relative overflow-hidden border-y border-border py-20 lg:py-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1fr_420px] lg:px-8">
+        <Reveal>
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">Certified &amp; Licensed</p>
+          <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">Pakistan Engineering Council Licensed Constructor</h2>
+          <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Rehman Construction &amp; Enterprises is a PEC registered construction firm, which means every project we
+            take on is executed under a licence recognised by the Pakistan Engineering Council — your guarantee of
+            legitimate, accountable and professionally supervised work.
+          </p>
+          <dl className="mt-8 grid gap-4 sm:grid-cols-2">
+            {[
+              { k: "Licence No.", v: "31332" },
+              { k: "Category", v: "C5/E" },
+            ].map((item) => (
+              <div key={item.k} className="rounded-2xl border border-primary/30 bg-card p-5">
+                <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{item.k}</dt>
+                <dd className="mt-2 text-lg font-extrabold text-primary">{item.v}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <Award className="size-4 text-primary" /> Registered with PEC since Oct 2025
+          </p>
+        </Reveal>
+        <Reveal delay={120}>
+          <a
+            href={img.license}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative mx-auto block w-full max-w-sm"
+          >
+            <div className="absolute -inset-3 rounded-[2rem] bg-primary/15 blur-2xl" aria-hidden />
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-primary/40 bg-card p-3 shadow-xl transition-transform duration-500 group-hover:-translate-y-1">
+              <img
+                src={img.license}
+                alt="Pakistan Engineering Council constructor licence of Rehman Construction & Enterprises"
+                width={900}
+                height={1270}
+                loading="lazy"
+                className="w-full rounded-[1.1rem] object-contain"
+              />
+            </div>
+            <span className="mt-4 block text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+              Tap to view full licence
+            </span>
+          </a>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-background relative">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <SectionHeading
+            eyebrow="Contact Us"
+            title="Request a Consultation"
+            intro="Fill out the form below or reach us directly."
+          />
+        <div className="mt-12 flex flex-col lg:flex-row gap-12">
+           <div className="lg:w-1/3 space-y-8">
+              <div>
+                 <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><Phone className="size-5 text-primary"/> Direct Contact</h4>
+                 <p className="text-muted-foreground">{site.phone}</p>
+                 <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="text-primary text-sm font-bold mt-2 inline-block">WhatsApp Us &rarr;</a>
+              </div>
+              <div>
+                 <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><Mail className="size-5 text-primary"/> Email</h4>
+                 <p className="text-muted-foreground">{site.email}</p>
+              </div>
+              <div>
+                 <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><MapPin className="size-5 text-primary"/> Location</h4>
+                 <p className="text-muted-foreground">{site.address}</p>
+              </div>
+           </div>
+           <div className="lg:w-2/3 bg-card p-8 rounded-2xl border border-border">
+              <form className="grid grid-cols-1 sm:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Name</label>
+                    <input type="text" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary" placeholder="Your Name" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Phone / WhatsApp</label>
+                    <input type="text" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary" placeholder="Your Phone Number" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Project Location</label>
+                    <input type="text" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary" placeholder="E.g. DHA Phase 2" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Plot Size</label>
+                    <input type="text" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary" placeholder="E.g. 10 Marla, 1 Kanal" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Type of Construction</label>
+                    <select className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary">
+                       <option>Residential</option>
+                       <option>Commercial</option>
+                       <option>Renovation</option>
+                    </select>
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-sm font-semibold">Scope</label>
+                    <select className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary">
+                       <option>Grey Structure</option>
+                       <option>Complete Construction</option>
+                    </select>
+                 </div>
+                 <div className="space-y-2 sm:col-span-2">
+                    <label className="text-sm font-semibold">Estimated Budget (Optional)</label>
+                    <input type="text" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-primary" placeholder="E.g. 1 Crore - 2 Crore" />
+                 </div>
+                 <div className="sm:col-span-2 mt-4">
+                    <button type="submit" className="w-full bg-primary text-primary-foreground font-bold uppercase tracking-widest py-4 rounded-lg hover:bg-accent transition-colors">
+                       Submit Inquiry
+                    </button>
+                 </div>
+              </form>
+           </div>
         </div>
       </div>
     </section>
@@ -156,6 +409,9 @@ function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* About Us Section */}
+      <AboutSection />
 
       {/* Services Section (Bottom space fixed) */}
       <section className="py-20 lg:py-28">
@@ -187,6 +443,15 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Why Choose Us */}
+      <WhyChooseUsSection />
+
+      {/* Meet CEO */}
+      <CeoSection />
+
+      {/* PEC Licence */}
+      <LicenseSection />
 
       {/* Project Rail Section (Bottom space fixed) */}
       <section className="overflow-hidden border-y border-border bg-card/30 py-20 lg:py-28">
@@ -256,26 +521,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Cost calculator */}
-      <section className="border-y border-border bg-card/30 py-20 lg:py-28">
-        <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionHeading
-            eyebrow="Estimate"
-            title="Construction cost calculator"
-            intro="Enter your area and finish level to get an instant estimate for your project."
-          />
-          <div className="mt-12 overflow-hidden rounded-2xl border border-primary/30 bg-[#0E1A2E]">
-            <iframe
-              src="/cost-calculator.html"
-              title="Construction Cost Estimate"
-              loading="lazy"
-              className="h-[720px] w-full border-0"
-            />
-          </div>
-        </div>
-      </section>
-
-
       {/* Testimonials */}
       <section className="overflow-hidden border-y border-border bg-card/30 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -289,6 +534,11 @@ function HomePage() {
           <TestimonialsRail />
         </div>
       </section>
+
+      {/* Contact Section */}
+      <ContactSection />
+
+      <TrustedPartners />
 
       <CtaBand />
     </>

@@ -14,7 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GlowLayer } from "@/components/GlowLayer";
+import { SiteBackgroundVideo } from "@/components/SiteBackgroundVideo";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { CostCalculatorFloat } from "@/components/CostCalculatorFloat";
 
 
 
@@ -133,7 +135,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="relative flex min-h-screen flex-col">
+        <SiteBackgroundVideo />
         <GlowLayer />
         <Header />
         <main className="flex-1">
@@ -141,6 +144,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <CostCalculatorFloat />
         <WhatsAppFloat />
       </div>
     </QueryClientProvider>

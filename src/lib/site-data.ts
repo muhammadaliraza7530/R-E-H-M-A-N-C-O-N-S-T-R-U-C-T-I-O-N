@@ -3,7 +3,9 @@
  * Photography and branding live in /public.
  */
 export const img = {
-  logo: "/logo.jpeg",
+  logo: "/logo.png",
+  ceo: "/team/ceo.jpg",
+  license: "/docs/pec-license.jpg",
 
   // Photoreal hero / feature photography
   spanishVilla: "/homes/hero-spanish.jpg",
@@ -33,6 +35,7 @@ export const site = {
   facebook: "https://facebook.com/",
   instagram: "https://instagram.com/",
   youtube: "https://youtube.com/",
+  linkedin: "https://linkedin.com/",
   whatsapp:
     "https://wa.me/923365949802?text=Hello%20Rehman%20Construction%2C%20I%20would%20like%20to%20discuss%20a%20construction%20project.",
   hours: [
@@ -48,26 +51,61 @@ export const navLinks = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
+  { to: "/calculator", label: "Cost Calculator" },
+  { to: "/process", label: "Process" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
+];
+
+export const founder = {
+  name: "Sami Ur Rehman",
+  role: "Founder & CEO",
+  photo: img.ceo,
+  credentials: [
+    "BS Civil Engineering",
+    "MS Construction Management",
+    "3 Years Professional Field Experience",
+  ],
+  journey: [
+    "I started on site as a young engineer, measuring steel, checking mixes and learning that a building is only as honest as the people who pour it. That experience became the foundation of Rehman Construction & Enterprises.",
+    "My vision is simple: bring proper engineering discipline and modern construction management to ordinary homeowners — transparent quantities, documented quality checks and one accountable team from excavation to handover.",
+  ],
+};
+
+export const whyChooseUs = [
+  { title: "Quality", body: "Professional workmanship, certified materials and stage-by-stage sign-off." },
+  { title: "Trust", body: "Transparent communication, honest quantities and no hidden costs." },
+  { title: "Excellence", body: "Attention to detail in structure, elevation and finishing." },
+  { title: "Professional Management", body: "Proper planning, procurement and daily site supervision." },
+];
+
+export const blogPosts = [
+  { slug: "cost-of-5-marla-house", title: "Cost of building a 5 Marla house", excerpt: "A realistic breakdown of grey structure and finishing costs on a 5 Marla plot in Islamabad and Rawalpindi.", image: img.brickFront, category: "Budgeting" },
+  { slug: "grey-structure-guide", title: "Grey structure construction guide", excerpt: "What happens between excavation and plaster, and the checks that matter at every pour.", image: img.greyClassic, category: "Guide" },
+  { slug: "select-a-contractor", title: "How to select a construction contractor", excerpt: "Questions to ask, documents to demand and warning signs to walk away from.", image: img.modernVilla, category: "Advice" },
+  { slug: "material-quality", title: "Construction material quality", excerpt: "Steel grades, cement brands and aggregate quality — what actually changes the life of your house.", image: img.classicMansion, category: "Materials" },
+  { slug: "mistakes-to-avoid", title: "House construction mistakes to avoid", excerpt: "The eight costly mistakes we see most often on private residential sites.", image: img.completedVilla, category: "Advice" },
+  { slug: "modern-trends", title: "Modern house construction trends", excerpt: "Facade materials, layouts and energy choices shaping new homes right now.", image: img.luxuryHouse, category: "Design" },
+  { slug: "plan-your-budget", title: "How to plan your construction budget", excerpt: "A stage-wise cashflow plan so your project never stops halfway.", image: img.courtyard, category: "Budgeting" },
 ];
 
 export const heroSlides = [
   {
-    title: "We build your dreams",
+    title: "Building Your Vision Into Reality",
     highlight:
-      "A construction house built on three words — quality, trust, excellence. Grey structure to final handover, executed by one accountable team.",
+      "Quality Construction. Professional Management. Trusted Execution.",
     image: img.luxuryVilla,
   },
   {
-    title: "We build trust",
+    title: "Engineered with Expertise. Built with Trust.",
     highlight:
-      "No subcontracted confusion, no hidden variations. Our own supervisors run the site and the client sees the same rate sheet we work from.",
+      "A modern construction management company with engineering expertise.",
     image: img.spanishVilla,
   },
   {
-    title: "Built to outlast",
+    title: "We Don't Just Construct Buildings — We Build Trust.",
     highlight:
-      "Certified steel, graded concrete and disciplined workmanship down to the rebar — buildings made to stand for generations.",
+      "Certified steel, graded concrete and disciplined workmanship down to the rebar.",
     image: img.luxuryHouse,
   },
   {
@@ -135,44 +173,58 @@ export const services = [
     slug: "residential-construction",
     title: "Residential Construction",
     image: img.luxuryHouse,
-    short: "Custom homes and villas delivered end to end — structure, elevation, interior finish.",
+    short: "Custom homes and villas delivered end to end.",
     body: "Custom homes and villas delivered end to end — structure, elevation and interior finish. One contract, one supervisor and one rate sheet from excavation to handover keys.",
   },
   {
     slug: "commercial-projects",
-    title: "Commercial Projects",
+    title: "Commercial Construction",
     image: img.classicMansion,
-    short: "Plazas, offices and retail units built to commercial-grade codes and timelines.",
+    short: "Plazas, offices and retail units built to commercial-grade codes.",
     body: "Plazas, offices and retail units built to commercial-grade codes and timelines, with procurement and labour planning that keeps a commercial programme on schedule.",
-  },
-  {
-    slug: "renovation",
-    title: "Renovation & Remodeling",
-    image: img.completedVilla,
-    short: "Structural upgrades and modern detailing that give existing spaces a second life.",
-    body: "Structural upgrades and modern detailing that give existing spaces a second life — re-elevated, remodelled and finished without you leaving the neighbourhood you love.",
   },
   {
     slug: "grey-structure",
     title: "Grey Structure",
     image: img.brickFront,
-    short: "Certified steel, graded concrete and disciplined workmanship down to the rebar.",
+    short: "Certified steel, graded concrete and disciplined workmanship.",
     body: "Certified steel, graded concrete and disciplined workmanship down to the rebar. Our own quality checks sign off every pour before the next stage begins.",
   },
   {
     slug: "finishing-works",
-    title: "Finishing Works",
+    title: "Complete Finishing Works",
     image: img.greyClassic,
-    short: "Tiling, woodwork, false ceiling, lighting and paint executed with a designer's eye.",
+    short: "Tiling, woodwork, false ceiling, lighting and paint.",
     body: "Tiling, woodwork, false ceiling, lighting and paint executed with a designer's eye — the detail stage where a building finally becomes a home.",
   },
   {
+    slug: "renovation",
+    title: "Renovation & Remodeling",
+    image: img.completedVilla,
+    short: "Structural upgrades and modern detailing for existing spaces.",
+    body: "Structural upgrades and modern detailing that give existing spaces a second life — re-elevated, remodelled and finished without you leaving the neighbourhood you love.",
+  },
+  {
     slug: "project-management",
-    title: "Project Management",
+    title: "Project Management & Supervision",
     image: img.spanishVilla,
-    short: "One point of accountability for budget, procurement, labour and quality control.",
+    short: "One point of accountability for budget, procurement, and labour.",
     body: "One point of accountability for budget, procurement, labour and quality control, so the client never has to arbitrate between contractors.",
   },
+  {
+    slug: "cost-estimation",
+    title: "Cost Estimation & Planning",
+    image: img.modernVilla,
+    short: "Accurate budgeting and execution plans.",
+    body: "Comprehensive and accurate budgeting based on current market rates. We provide a transparent execution plan so you know exactly what your project will cost.",
+  },
+  {
+    slug: "construction-consultancy",
+    title: "Construction Consultancy",
+    image: img.courtyard,
+    short: "Expert engineering and management advice.",
+    body: "Leverage our BS Civil Engineering and MS Construction Management background to ensure your project is planned and executed flawlessly.",
+  }
 ];
 
 export const registrations = [
@@ -185,10 +237,12 @@ export const registrations = [
 ];
 
 export const process = [
-  { step: "01", title: "Consultation", body: "We discuss your plot, budget and requirements — in person or on WhatsApp." },
-  { step: "02", title: "Costing", body: "A realistic costing and construction schedule, free of charge, before anything starts." },
-  { step: "03", title: "Execution", body: "Grey structure and finishing delivered by our own supervised site teams." },
-  { step: "04", title: "Handover", body: "Final finishing, cleaning and a walk-through before your keys are handed over." },
+  { step: "01", title: "Consultation", body: "Understand client requirements — in person or on WhatsApp." },
+  { step: "02", title: "Planning & Estimation", body: "Prepare budget and execution plan." },
+  { step: "03", title: "Design & Coordination", body: "Finalize drawings and requirements." },
+  { step: "04", title: "Construction Execution", body: "Professional site management and supervision." },
+  { step: "05", title: "Quality Control", body: "Regular inspection of workmanship and materials." },
+  { step: "06", title: "Project Completion", body: "Deliver the completed project." },
 ];
 
 export const galleryImages = [

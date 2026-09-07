@@ -1,7 +1,29 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { img } from "@/lib/site-data";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  Home,
+  Building2,
+  Layers,
+  Paintbrush,
+  Hammer,
+  ClipboardList,
+  Calculator,
+  Compass,
+} from "lucide-react";
+import { img, services } from "@/lib/site-data";
 import { PageHero, CtaBand } from "@/components/PageBits";
-// import { Reveal, SectionHeading } from "@/components/ui-bits";
+import { Reveal, SectionHeading } from "@/components/ui-bits";
+
+const icons: Record<string, typeof Home> = {
+  "residential-construction": Home,
+  "commercial-projects": Building2,
+  "grey-structure": Layers,
+  "finishing-works": Paintbrush,
+  renovation: Hammer,
+  "project-management": ClipboardList,
+  "cost-estimation": Calculator,
+  "construction-consultancy": Compass,
+};
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -10,13 +32,12 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Residential and commercial construction, grey structure, renovation, finishing works and project management by Rehman Construction & Enterprises, Islamabad.",
+          "Residential and commercial construction, grey structure, renovation, finishing works, cost estimation and project management by Rehman Construction & Enterprises, Islamabad.",
       },
       { property: "og:title", content: "Services — Rehman Construction & Enterprises" },
-      {
-        property: "og:description",
-        content: "Six disciplines, one contract, one supervisor.",
-      },
+      { property: "og:description", content: "Eight disciplines, one contract, one supervisor." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ServicesPage,
@@ -27,19 +48,44 @@ function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Coming Soon"
-        intro="Our service details and booking experience are being prepared. Please check back soon for updates."
+        title="Our Services"
+        intro="Everything a building needs — from the first estimate to the handover keys — delivered by one accountable team."
         image={img.spanishVilla}
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
-          <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/10 p-10 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Under Construction</p>
-            <h2 className="mt-4 text-2xl font-bold sm:text-3xl">New services pages are on the way</h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              We are updating this section with clearer offerings, timelines and consultation options.
-            </p>
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="What we do"
+            title="Eight disciplines, one contract"
+            intro="Each service is delivered with engineered planning, documented quality checks and transparent quantities."
+          />
+
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => {
+              const Icon = icons[s.slug] ?? Home;
+              return (
+                <Reveal key={s.slug} delay={i * 70} className="h-full">
+                  <article className="lit-panel flex h-full flex-col overflow-hidden bg-card">
+                    <img src={s.image} alt={s.title} loading="lazy" className="aspect-16/10 w-full object-cover" />
+                    <div className="flex flex-1 flex-col p-6">
+                      <span className="grid size-11 place-items-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
+                        <Icon className="size-5" />
+                      </span>
+                      <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                      <Link
+                        to="/contact"
+                        className="mt-5 inline-flex items-center gap-2 self-start rounded-full border border-primary/50 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                      >
+                        Request consultation <ArrowRight className="size-3.5" />
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

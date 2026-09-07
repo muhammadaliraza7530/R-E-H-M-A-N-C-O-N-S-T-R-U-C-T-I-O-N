@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // When this project is built outside the Lovable sandbox (e.g. downloaded ZIP deployed to Vercel),
+  // target the Vercel Nitro preset. Inside the Lovable sandbox this is overridden automatically.
+  nitro: {
+    preset: "vercel",
+  },
 });

@@ -56,7 +56,7 @@ export function SectionHeading({
   align = "left",
 }: {
   eyebrow: string;
-  title: string;
+  title?: string;
   intro?: string;
   align?: "left" | "center";
 }) {
@@ -71,7 +71,7 @@ export function SectionHeading({
         {align === "left" && <span className="h-px w-8 shrink-0 bg-primary" />}
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-2xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h2>
+      {title && <h2 className="mt-4 text-2xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h2>}
       {intro && <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{intro}</p>}
     </Reveal>
   );

@@ -24,13 +24,13 @@ export function PageHero({
         decoding="async"
         className="absolute inset-0 size-full scale-105 object-cover"
       />
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-black/60" />
+      <div className="light-scrim absolute inset-0" />
+      
       <div className="relative mx-auto w-full max-w-4xl px-5 text-center lg:px-8">
         <Reveal>
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">{eyebrow}</p>
           <h1 className="mt-4 text-2xl font-extrabold uppercase leading-[1.1] sm:text-4xl lg:text-6xl">{title}</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-300 sm:text-base">{intro}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">{intro}</p>
         </Reveal>
       </div>
     </section>

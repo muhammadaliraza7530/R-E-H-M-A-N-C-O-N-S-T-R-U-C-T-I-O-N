@@ -1,55 +1,50 @@
 import { useEffect } from "react";
 
 /**
- * Site-wide premium light layer.
- * 1. Pointer-following corner glow on every `.lit-panel`.
- * 2. Panels near the viewport centre light up automatically while scrolling.
+ * Pointer-tracking layer that feeds the `--mx` / `--my` CSS variables used by
+ * the `lit-panel` utility, so the corner glow on every card follows the
+ * visitor's cursor across the whole site.
  */
 export function GlowLayer() {
   useEffect(() => {
     let raf = 0;
+    let lastEvent: PointerEvent | null = null;
+    let current: HTMLElement | null = null;
+
+    const clear = () => {
+      if (current) {
+        current.style.removeProperty("--mx");
+        current.style.removeProperty("--my");
+        current = null;
+      }
+    };
+
+    const update = () => {
+      raf = 0;
+      const e = lastEvent;
+      if (!e) return;
+      const target = (e.target as HTMLElement | null)?.closest?.(".lit-panel");
+      if (target !== current) {
+        clear();
+        current = target as HTMLElement | null;
+      }
+      if (current) {
+        const rect = current.getBoundingClientRect();
+        current.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+        current.style.setProperty("--my", `${e.clientY - rect.top}px`);
+      }
+    };
 
     const onMove = (e: PointerEvent) => {
-      const target = (e.target as HTMLElement | null)?.closest?.(".lit-panel") as HTMLElement | null;
-      if (!target) return;
-      const r = target.getBoundingClientRect();
-      target.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      target.style.setProperty("--my", `${e.clientY - r.top}px`);
-    };
-
-    const sweep = () => {
-      raf = 0;
-      const mid = window.innerHeight * 0.52;
-      const band = window.innerHeight * 0.3;
-      document.querySelectorAll<HTMLElement>(".lit-panel").forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) {
-          el.classList.remove("is-lit");
-          return;
-        }
-        const center = r.top + r.height / 2;
-        const lit = Math.abs(center - mid) < band;
-        el.classList.toggle("is-lit", lit);
-        if (lit) {
-          el.style.setProperty("--mx", "50%");
-          el.style.setProperty("--my", "0%");
-        }
-      });
-    };
-
-    const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(sweep);
+      lastEvent = e;
+      if (!raf) raf = requestAnimationFrame(update);
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-    schedule();
-
+    window.addEventListener("pointerleave", clear);
     return () => {
       window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("pointerleave", clear);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);

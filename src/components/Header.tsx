@@ -27,7 +27,9 @@ export function Header() {
           <img
             src={site.logo}
             alt="Rehman Construction & Enterprises logo"
-            className="size-12 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 lg:size-14"
+            width={224}
+            height={224}
+            className="size-14 object-contain transition-transform duration-500 group-hover:scale-105 lg:size-16"
           />
           <span className="text-xs font-bold uppercase leading-tight tracking-[0.22em] sm:text-sm">
             {site.name}
