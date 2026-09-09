@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Phone, CheckCircle2, Award, ShieldCheck, HardHat, Mail, MapPin, Maximize, Ruler, Download } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, Award, ShieldCheck, HardHat, Mail, MapPin, Maximize, Ruler, Download, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 import { heroSlides, img, process, services, site, stats } from "@/lib/site-data";
 import { projects } from "@/lib/site";
@@ -265,19 +265,27 @@ function CeoSection() {
 function LicenseSection() {
   return (
     <section className="relative overflow-hidden border-y border-border py-20 lg:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1fr_420px] lg:px-8">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.2fr_420px] lg:px-8">
         <Reveal>
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">Certified &amp; Licensed</p>
-          <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">Pakistan Engineering Council Licensed Constructor</h2>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Rehman Construction &amp; Enterprises is a PEC registered construction firm, which means every project we
-            take on is executed under a licence recognised by the Pakistan Engineering Council — your guarantee of
-            legitimate, accountable and professionally supervised work.
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">Company Registration</p>
+          <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">
+            Rehman Construction &amp; Enterprises (SMC-Private) Limited
+          </h2>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Rehman Construction &amp; Enterprises (SMC-Private) Limited is a formally incorporated company
+            registered with the Securities and Exchange Commission of Pakistan (SECP) under the Companies Act,
+            2017.
+          </p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Our incorporation reflects our commitment to operating with professionalism, transparency and
+            accountability while delivering quality construction and enterprise solutions to our clients.
           </p>
           <dl className="mt-8 grid gap-4 sm:grid-cols-2">
             {[
-              { k: "Licence No.", v: "31332" },
-              { k: "Category", v: "C5/E" },
+              { k: "Entity", v: "SMC-Private Limited" },
+              { k: "Authority", v: "SECP" },
+              { k: "Legal Framework", v: "Companies Act, 2017" },
+              { k: "Business Focus", v: "Construction & Enterprise" },
             ].map((item) => (
               <div key={item.k} className="rounded-2xl border border-primary/30 bg-card p-5">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{item.k}</dt>
@@ -286,39 +294,46 @@ function LicenseSection() {
             ))}
           </dl>
           <p className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            <Award className="size-4 text-primary" /> Registered with PEC since Oct 2025
+            <Award className="size-4 text-primary" /> Registered and operating with professional accountability
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <a
-            href={img.license}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative mx-auto block w-full max-w-sm"
-          >
-            <div className="absolute -inset-3 rounded-[2rem] bg-primary/15 blur-2xl" aria-hidden />
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-primary/40 bg-card p-3 shadow-xl transition-transform duration-500 group-hover:-translate-y-1">
-              <img
-                src={img.license}
-                alt="Pakistan Engineering Council constructor licence of Rehman Construction & Enterprises"
-                width={900}
-                height={1270}
-                loading="lazy"
-                className="w-full rounded-[1.1rem] object-contain"
-              />
+          <div className="mx-auto w-full max-w-sm">
+            <div className="rounded-[1.5rem] border border-primary/40 bg-card p-3 shadow-xl">
+              <div className="mb-3 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                Official Certificate
+              </div>
+              <a href={img.certificate} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-[1.1rem]">
+                <img
+                  src={img.license}
+                  alt="Official certificate and company registration document of Rehman Construction & Enterprises"
+                  width={900}
+                  height={1270}
+                  loading="lazy"
+                  className="w-full rounded-[1.1rem] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </a>
             </div>
-            <span className="mt-4 block text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
-              Tap to view full licence
-            </span>
-          </a>
-          <a
-            href={img.certificate}
-            download
-            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow transition-colors hover:bg-primary/90"
-          >
-            <Download className="size-4" />
-            Download Certificate
-          </a>
+            <div className="mt-4 flex gap-3">
+              <a
+                href={img.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-primary/40 bg-background px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/5"
+              >
+                <Eye className="size-4" />
+                View
+              </a>
+              <a
+                href={img.certificate}
+                download
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
+                <Download className="size-4" />
+                Download
+              </a>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>
