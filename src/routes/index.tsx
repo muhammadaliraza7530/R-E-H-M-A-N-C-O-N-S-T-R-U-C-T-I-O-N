@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Phone, CheckCircle2, Award, ShieldCheck, HardHat, Mail, MapPin, Maximize, Ruler } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, Award, ShieldCheck, HardHat, Mail, MapPin, Maximize, Ruler, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { heroSlides, img, process, services, site, stats } from "@/lib/site-data";
 import { projects } from "@/lib/site";
@@ -310,6 +310,14 @@ function LicenseSection() {
             <span className="mt-4 block text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
               Tap to view full licence
             </span>
+          </a>
+          <a
+            href={img.certificate}
+            download
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow transition-colors hover:bg-primary/90"
+          >
+            <Download className="size-4" />
+            Download Certificate
           </a>
         </Reveal>
       </div>

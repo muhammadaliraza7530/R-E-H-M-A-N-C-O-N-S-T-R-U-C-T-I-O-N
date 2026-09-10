@@ -6,6 +6,7 @@ export const img = {
   logo: "/logo.png",
   ceo: "/team/ceo.jpg",
   license: "/docs/pec-license.jpg",
+  certificate: "/certificate.pdf",
 
   // Photoreal hero / feature photography
   spanishVilla: "/homes/hero-spanish.jpg",
