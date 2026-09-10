@@ -276,6 +276,16 @@ function LicenseSection() {
             registered with the Securities and Exchange Commission of Pakistan (SECP) under the Companies Act,
             2017.
           </p>
+          <div className="mt-6 max-w-2xl rounded-2xl border border-primary/30 bg-card/70 p-5">
+            <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+              Security Exchange and Commission of Pakistan
+            </div>
+            <div className="mt-2 text-lg font-extrabold text-foreground">SECP Registration</div>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Officially registered and licensed under the Securities and Exchange Commission of Pakistan,
+              maintaining legal standing and professional accountability.
+            </p>
+          </div>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Our incorporation reflects our commitment to operating with professionalism, transparency and
             accountability while delivering quality construction and enterprise solutions to our clients.
