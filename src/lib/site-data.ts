@@ -5,8 +5,12 @@
 export const img = {
   logo: "/logo.png",
   ceo: "/team/ceo.jpg",
-  license: "/docs/pec-license.jpg",
-  certificate: "/certificate.pdf",
+  license: "/PEC.png",
+  certificate: "/SECP.pdf",
+  secpCertificate: "/SECP.png",
+  secpPdf: "/SECP.pdf",
+  pecCertificate: "/PEC.png",
+  pecPdf: "/PEC.pdf",
 
   // Photoreal hero / feature photography
   spanishVilla: "/homes/hero-spanish.jpg",

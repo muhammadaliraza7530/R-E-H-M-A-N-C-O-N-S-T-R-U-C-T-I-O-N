@@ -263,88 +263,98 @@ function CeoSection() {
 }
 
 function LicenseSection() {
+  const registrationCards = [
+    {
+      title: "SECP Registration (Securities and Exchange Commission of Pakistan)",
+      caption:
+        "Rehman Construction & Enterprises (SMC-Private) Limited is officially incorporated and registered under the Companies Act, 2017 with SECP, ensuring full corporate compliance, transparency, and business accountability.",
+      image: "/public/SECP.png",
+      link: "/SECP.pdf",
+      label: "SECP",
+    },
+    {
+      title: "PEC License & Registration (Pakistan Engineering Council)",
+      caption:
+        "Registered with the Pakistan Engineering Council (PEC), demonstrating structural engineering expertise, certified standards, and professional site supervision.",
+      image: "/PEC.png",
+      link: "/PEC.pdf",
+      label: "PEC",
+    },
+  ];
+
   return (
     <section className="relative overflow-hidden border-y border-border py-20 lg:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.2fr_420px] lg:px-8">
-        <Reveal>
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">Company Registration</p>
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:text-xs">
+            Company Registration &amp; Licensing
+          </p>
           <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">
-            Rehman Construction &amp; Enterprises (SMC-Private) Limited
+            Corporate Compliance &amp; Professional Registration
           </h2>
-          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Rehman Construction &amp; Enterprises (SMC-Private) Limited is a formally incorporated company
-            registered with the Securities and Exchange Commission of Pakistan (SECP) under the Companies Act,
-            2017.
-          </p>
-          <div className="mt-6 max-w-2xl rounded-2xl border border-primary/30 bg-card/70 p-5">
-            <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
-              Security Exchange and Commission of Pakistan
-            </div>
-            <div className="mt-2 text-lg font-extrabold text-foreground">SECP Registration</div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Officially registered and licensed under the Securities and Exchange Commission of Pakistan,
-              maintaining legal standing and professional accountability.
-            </p>
-          </div>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Our incorporation reflects our commitment to operating with professionalism, transparency and
-            accountability while delivering quality construction and enterprise solutions to our clients.
-          </p>
-          <dl className="mt-8 grid gap-4 sm:grid-cols-2">
-            {[
-              { k: "Entity", v: "SMC-Private Limited" },
-              { k: "Authority", v: "SECP" },
-              { k: "Legal Framework", v: "Companies Act, 2017" },
-              { k: "Business Focus", v: "Construction & Enterprise" },
-            ].map((item) => (
-              <div key={item.k} className="rounded-2xl border border-primary/30 bg-card p-5">
-                <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{item.k}</dt>
-                <dd className="mt-2 text-lg font-extrabold text-primary">{item.v}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            <Award className="size-4 text-primary" /> Registered and operating with professional accountability
-          </p>
-        </Reveal>
-        <Reveal delay={120}>
-          <div className="mx-auto w-full max-w-sm">
-            <div className="rounded-[1.5rem] border border-primary/40 bg-card p-3 shadow-xl">
-              <div className="mb-3 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
-                Official Certificate
-              </div>
-              <a href={img.certificate} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-[1.1rem]">
-                <img
-                  src={img.license}
-                  alt="Official certificate and company registration document of Rehman Construction & Enterprises"
-                  width={900}
-                  height={1270}
-                  loading="lazy"
-                  className="w-full rounded-[1.1rem] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </a>
-            </div>
-            <div className="mt-4 flex gap-3">
-              <a
-                href={img.certificate}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-primary/40 bg-background px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/5"
-              >
-                <Eye className="size-4" />
-                View
-              </a>
-              <a
-                href={img.certificate}
-                download
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                <Download className="size-4" />
-                Download
-              </a>
-            </div>
-          </div>
-        </Reveal>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {registrationCards.map((card, index) => (
+            <Reveal key={card.title} delay={index * 100}>
+              <article className="flex h-full flex-col rounded-[2rem] border border-primary/30 bg-card p-6 shadow-xl transition-transform duration-500 hover:-translate-y-1">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <span className="rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-primary">
+                    {card.label}
+                  </span>
+                  <Award className="size-7 text-primary" />
+                </div>
+
+                <div className="min-h-[170px]">
+                  <h3 className="text-2xl font-extrabold leading-tight text-foreground">
+                    {card.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {card.caption}
+                  </p>
+                </div>
+
+                <div className="mt-6 rounded-[1.5rem] border border-primary/30 bg-background p-3">
+                  <a
+                    href={card.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block overflow-hidden rounded-[1.1rem]"
+                  >
+                    <img
+                      src={card.image}
+                      alt={`${card.title} certificate`}
+                      width={900}
+                      height={1270}
+                      loading="lazy"
+                      className="w-full rounded-[1.1rem] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+
+                <div className="mt-5 flex gap-3">
+                  <a
+                    href={card.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-primary/40 bg-background px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/5"
+                  >
+                    <Eye className="size-4" />
+                    View
+                  </a>
+                  <a
+                    href={card.link}
+                    download
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow transition-colors hover:bg-primary/90"
+                  >
+                    <Download className="size-4" />
+                    Download
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
